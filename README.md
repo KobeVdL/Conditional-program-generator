@@ -5,8 +5,8 @@ The generator is fully written in Haskell so make sure you install Haskell first
 Secondly you need to install ghci and stack, stack is needed to include randomness in the algorithm.
 For testing you need to make sure you installed the latest ghci (package timeit).
 
-## Information about the classes used
-* **BasicProlog** - This class has the basic constructor to construct a Horn clause program, furthermore it also includes functions to bind variables to the given  term/predicate/rule. The classes supported are the following:
+## Information about the Files used
+* **BasicProlog** - This file has the basic constructor to construct a Horn clause program, furthermore it also includes functions to bind variables to the given  term/predicate/rule. The classes supported are the following:
   * **Term** - The basic building blocks of our program, a term is a constant, an atom or a variable. Example: true = MkTerm "true" 0 [] 
                
                The first argument describes the name of the term, make sure not to use names that consist of "_"[Number] then the renaming algorithm won't work.
@@ -18,8 +18,13 @@ For testing you need to make sure you installed the latest ghci (package timeit)
   * **Clause** A clause consist of a headPredicate and its body which is a list of predicates. The clauses work exactly the same as a prolog program and are constructed as follows. Rule [Put your Predicate here] [Put your list of Predicates here].
   * **Program** To end this we have als a Program which is just a list of rules and is created with a MkProgram.
 * **BasicStep** This class is used as a basic case that a new programming language could simplify a program. This simplification step should be changed by your needs for a new programming language.
-* **BottomUp** This class describes the bottom-up approuch for generating new programs that fulfill the given precondition.
+* **BottomUp** This file describes the bottom-up approuch for generating new programs that fulfill the given precondition.
 * **Constructors** Some example Programs used for testing.
 * **CounterExampleAlgorithms** Use the 3 generating algorithms to find a counterExample these are compared to each other.
-* **NaiveGenerator** The algorithm that just random generates programs and don't look at given preconditions. If the generated program does not fulfill the precondition it just tries again.
-* 
+* **NaiveGenerator** The file contains an algorithm that just random generates programs and don't look at given preconditions. If the generated program does not fulfill the precondition it just tries again.
+* **PropertyChecking** This file contains the different reduction step algorithms, only the normalStep function is correct
+* **Shrinking** This file contains the algorithm to shrink a returned term, to run the algorithm perform the shrinkAlgorithm method this takes a starting predicate, the property what the predicate must fulfill, the precondition of the program and the program itself. It returns a set of predicates that are reduced but still form counterExamples.
+* **Shuffle** This file contains the randomness functions shuffle random shuffels a list, splitNumber distibute a random value over n childs in a random manner.
+* **Tests** Contains some methods to check if the program works correctly and contains methods that output the time needed for each of the 3 algorithms to perform.
+* **TopDown** This file describes the top-down approuch for generating new programs that fulfill the given precondition.
+* **TopDownBackTrack** This file describes the top-down with back-track node approuch for generating new programs that fulfill the given precondition.
