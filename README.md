@@ -1,4 +1,4 @@
-# ProgramPreconditionGenerator
+# Conditional program generator
 Haskell generator for programs that always fulfill the given preconditon.
 ## How to get started?
 The generator is fully written in Haskell so make sure you install Haskell first, this can be done on https://www.haskell.org/platform/.
